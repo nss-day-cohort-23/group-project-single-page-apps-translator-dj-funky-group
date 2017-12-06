@@ -9,10 +9,24 @@
   <body>
     <div class="container">
       <div class="container-fluid">
-        <textarea id="textInput" name="text-input" rows="8" cols="80"></textarea>
-        <div id="langOption"></div>
-        <button id="translateBtn" type="button" name="button">Translate</button>
-        <div id="translatedOutput"></div>
+        <h1 class="text-center">Holiday Greeting Translator!</h1>
+        <hr>
+        <div class="row justify-content-center">
+          <textarea id="textInput" class="col-auto text-input" name="text-input" rows="8" cols="50">Happy New Year</textarea>
+        </div>
+        <hr>
+        <div class="row justify-content-around">
+          <select id="langOption">
+            <option value="dutch">Dutch</option>
+            <option value="french">French</option>
+            <option value="greek">Greek</option>
+            <option value="japanese">Japanese</option>
+          </select>
+          <button id="translateBtn" type="button" name="button">Translate</button>
+        </div>
+        <div class="row">
+          <div id="translatedOutput" class="text-output"></div>
+        </div>
       </div>
     </div>
     <script src="dist/bundle.js" charset="utf-8"></script>
