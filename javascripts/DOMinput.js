@@ -11,12 +11,12 @@ translateBtn.addEventListener("click", function () {
 
 function textInput () {
     let userInput = document.getElementById("textInput").value;
-    return userInput
+    return userInput;
 }
 
 function getLanguage () {
     let selectedLanguage = document.getElementById("langOption").value;
-    return selectedLanguage
+    return selectedLanguage;
 }
 
 

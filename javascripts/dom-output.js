@@ -10,5 +10,6 @@ function outputTranslation(translation){
 }
 
 function printTranslation(){
-    outputTranslation(translator.translate());
+    outputTranslation(translator.translate()); //translate() = w/e we call translator function
 } 
+
