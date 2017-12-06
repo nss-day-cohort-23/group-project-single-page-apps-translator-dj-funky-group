@@ -1,13 +1,16 @@
 "use strict";
-// dom-input.js
-// - adds button click event listener to DOM translate button
+
+let text;
+let lang;
+
 let translateBtn = document.getElementById("translateBtn");
-translateBtn.addEventListener("click", )
-
-
+translateBtn.addEventListener("click", function () {
+    text = textInput();
+    lang = getLanguage();
+});
 
 function textInput () {
-    let userInput = document.getElementById("textInput").innerText;
+    let userInput = document.getElementById("textInput").value;
     return userInput
 }
 
@@ -16,7 +19,5 @@ function getLanguage () {
     return selectedLanguage
 }
 
-// - stores language selection as str
 
-// - exports textarea str, exports selection str
-// module.exports = {  };
+module.exports = { text, lang };
