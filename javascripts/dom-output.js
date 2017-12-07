@@ -5,11 +5,15 @@ const translator = require("./translator");
 //reference DOM element to ouput translation
 const output = document.getElementById('translatedOutput');
 
-function outputTranslation(translation){
+function outputTranslation(translation) {
     output.innerHTML = translation;
 }
 
-function printTranslation(){
-    outputTranslation(translator.translate()); //translate() = w/e we call translator function
+function printTranslation() {
+    let string = 'test';
+    // translator.translate();//translate() = w/e we call translator function
+    outputTranslation(string);
 } 
+
+module.export = { printTranslation };
 
