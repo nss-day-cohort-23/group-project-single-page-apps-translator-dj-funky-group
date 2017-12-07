@@ -17,9 +17,12 @@ const translate = (text, opt) => {
   let translatedArr = arr.map( word => {
     return languages[opt](word);
   });
-  let translatedStr = translatedArr.join(" ");
-  translatedStr = translatedStr.charAt(0).toUpperCase() + translatedStr.slice(1);
-  return translatedStr;
+
+  let completedStr = translatedArr.join(" ");
+  completedStr = completedStr.charAt(0).toUpperCase() + completedStr.slice(1);
+  let wordCheck = translatedArr.indexOf(undefined);
+  let stringToPrint = wordCheck !== -1 ? "We speak American here." : completedStr;
+  return stringToPrint;
 };
 
 
