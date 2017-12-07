@@ -6,3 +6,6 @@ let japaneseKanji = {
     "year": "とし"
 };
 
+
+module.exports = japaneseKanji;
+

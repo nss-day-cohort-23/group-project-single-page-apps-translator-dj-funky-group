@@ -5,3 +5,5 @@ let japanesePhonetic = {
     "new": "hoyahoya",
     "year": "toshi"
 }
+
+module.exports = japanesePhonetic;
