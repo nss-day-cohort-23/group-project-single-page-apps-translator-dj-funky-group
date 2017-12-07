@@ -1,10 +1,17 @@
 "use strict";
 // Private variable to store Dutch words 
-const dutchWords = { happy: "gelukkig", new: "nieuwe", year: "jaar" };
+const dutchWords = {
+    happy: "Gelukkig", 
+    new: "Nieuwe", 
+    year: "Jaar", 
+    merry: "Vrolijk",
+    christmas: "Kerstmis" 
+};
 
 //code that grabs the correct Dutch word and returns it
 const getDutch = function (word) {
     return dutchWords[word];
 };
 
-module.export = { getDutch };
+
+module.exports = { getDutch };
