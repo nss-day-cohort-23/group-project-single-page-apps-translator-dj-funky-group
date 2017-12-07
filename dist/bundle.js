@@ -36,7 +36,7 @@ let listenButton = document.getElementById("listenBtn");
 
 const listener = () => {
 
-  buttonDiv.addEventListener("click", () => {
+  buttonDiv.addEventListener("click", (event) => {
     let text = dom.textInput();
     let opt = dom.getLanguage();
     let translation = translate(text, opt);
@@ -44,6 +44,7 @@ const listener = () => {
       output.innerHTML = translation;
     } else if (event.target.id === "listenBtn"){
       speaker(translation);
+      output.innerHTML = translation;
     }
   });
 };
@@ -104,16 +105,17 @@ events();
 "use strict";
 
 function speak(string) {
-    let speaker= window.speechSynthesis;
-    let speech = new SpeechSynthesisUtterance();
+    let speaker = window.speechSynthesis;
     let voices = speaker.getVoices();
-    speech.voice = voices[10]; // Note: some voices don't support altering params
+    let speech = new SpeechSynthesisUtterance();
+    speech.voice = voices[2]; 
     speech.voiceURI = 'native';
     speech.volume = 1; // 0 to 1
     speech.rate = 0.5; // 0.1 to 10
     speech.pitch = 1; //0 to 2
     speech.text = string;
     speech.lang = 'en-US';
+    console.log("the VOICE", speech.voice);
     speaker.speak(speech);
 }
 
@@ -147,6 +149,8 @@ const translate = (text, opt) => {
   let stringToPrint = wordCheck !== -1 ? "We speak American here." : completedStr;
   return stringToPrint;
 };
+
+
 
 
 module.exports = translate;

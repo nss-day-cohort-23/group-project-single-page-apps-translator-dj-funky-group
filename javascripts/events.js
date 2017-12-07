@@ -10,7 +10,7 @@ let listenButton = document.getElementById("listenBtn");
 
 const listener = () => {
 
-  buttonDiv.addEventListener("click", () => {
+  buttonDiv.addEventListener("click", (event) => {
     let text = dom.textInput();
     let opt = dom.getLanguage();
     let translation = translate(text, opt);
@@ -18,6 +18,7 @@ const listener = () => {
       output.innerHTML = translation;
     } else if (event.target.id === "listenBtn"){
       speaker(translation);
+      output.innerHTML = translation;
     }
   });
 };
