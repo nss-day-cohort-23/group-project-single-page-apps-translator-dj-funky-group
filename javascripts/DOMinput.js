@@ -12,7 +12,7 @@ translateBtn.addEventListener("click", function () {
 });
 
 function textInput () {
-    let userInput = document.getElementById("textInput").value;
+    let userInput = document.getElementById("textInput").value.toLowerCase();
     return userInput;
 }
 
