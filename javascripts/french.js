@@ -6,8 +6,8 @@ const frenchWords = {
   year: "année"
 };
 
-const translateToFrench = word => {
+const french = word => {
   return frenchWords[word];
 };
 
-module.exports = {translateToFrench};
+module.exports = {french};
