@@ -1,18 +1,24 @@
 "use strict";
 
-// let dom = require("./DOMinput");
-// let translate = require("./string-splitter");
-// let greek = require("./greek");
-// let japanese = require("./japanese");
-// let dutch = require("./dutch");
+const greek = require("./greek");
+const japanese = require("./japanese");
+const dutch = require("./dutch");
+const french = require("./french");
+const languages = {
+  greek: greek,
+  japanese: japanese,
+  dutch: dutch,
+  french: french
+};
 
-// let translatedString = translate.splitSentence.map( (word) => { 
-//     return [dom.lang](word);
-// });
+const translate = (text, opt) => {
+  let arr = text.split(' ');
+  let translatedArr = arr.map( word => {
+    return languages[opt](word);
+  });
+  console.log(translatedArr);
+  return translatedArr.join(" ");
+};
 
-// translatedString.join(" ");
 
-// if we each name our functions lowercase to match the value of the input selected, ie greek, japanese, dutch, french - we could call the function and pass in each word of the array without being limited by the if/else statement - see dynamic cards exercise where the below syntax was used to make a variable act as a function 
-// totalOutput = window[opDetermine](input1.value, input2.value);
-
-// module.exports=translatedString;
+module.exports = translate;
