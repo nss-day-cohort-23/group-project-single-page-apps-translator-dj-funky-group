@@ -10,8 +10,7 @@ function outputTranslation(translation) {
 }
 
 function printTranslation() {
-    let string = 'test';
-    // translator.translate();//translate() = w/e we call translator function
+    let string = translator.translate();//translate() = w/e we call translator function
     outputTranslation(string);
 } 
 
