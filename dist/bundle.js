@@ -27,9 +27,12 @@ module.exports = getDutch;
 "use strict";
 const translate = require("./translator.js");
 const dom = require("./DOMinput.js");
+const speaker = require("./speaker.js");
 const output = document.getElementById('translatedOutput');
 
+
 let translateBtn = document.getElementById("translateBtn");
+let listenButton = document.getElementById("listenBtn");
 
 const listener = () => {
   translateBtn.addEventListener("click", () => {
@@ -39,11 +42,19 @@ const listener = () => {
     output.innerHTML = translation;
     }
   );
+// refactor to be event.target
+  listenButton.addEventListener("click", () => {
+    console.log("listen button clicked");
+    let text = dom.textInput();
+    let opt = dom.getLanguage();
+    let translation = translate(text, opt);
+    speaker(translation);
+  });
 };
 
 module.exports = listener;
 
-},{"./DOMinput.js":1,"./translator.js":8}],4:[function(require,module,exports){
+},{"./DOMinput.js":1,"./speaker.js":8,"./translator.js":9}],4:[function(require,module,exports){
 "use strict";
 
 let frenchWords = {
@@ -62,7 +73,7 @@ module.exports = french;
 "use strict";
 console.log("linked");
 
-let greek = {happy: "Eftychismeno", new: "to neo", year: "etos" };
+let greek = {happy: "eftychismeno", new: "to neo", year: "etos" };
 
 function getGreekWord (word) {
     return greek[word];
@@ -94,11 +105,31 @@ events();
 
 },{"./events.js":3}],8:[function(require,module,exports){
 "use strict";
+function speak(string) {
+    let speaker= window.speechSynthesis;
+    let speech = new SpeechSynthesisUtterance();
+    let voices = speaker.getVoices();
+    speech.voice = voices[10]; // Note: some voices don't support altering params
+    speech.voiceURI = 'native';
+    speech.volume = 1; // 0 to 1
+    speech.rate = 0.5; // 0.1 to 10
+    speech.pitch = 1; //0 to 2
+    speech.text = string;
+    speech.lang = 'en-US';
+    speaker.speak(speech);
+}
+
+module.exports = speak;
+
+
+},{}],9:[function(require,module,exports){
+"use strict";
 
 const greek = require("./greek");
 const japanese = require("./japanese");
 const dutch = require("./dutch");
 const french = require("./french");
+
 const languages = {
   greek: greek,
   japanese: japanese,
@@ -111,8 +142,12 @@ const translate = (text, opt) => {
   let translatedArr = arr.map( word => {
     return languages[opt](word);
   });
-  console.log(translatedArr);
-  return translatedArr.join(" ");
+
+  let completedStr = translatedArr.join(" ");
+  completedStr = completedStr.charAt(0).toUpperCase() + completedStr.slice(1);
+  let wordCheck = translatedArr.indexOf(undefined);
+  let stringToPrint = wordCheck !== -1 ? "We speak American here." : completedStr;
+  return stringToPrint;
 };
 
 
