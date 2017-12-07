@@ -62,7 +62,7 @@ module.exports = french;
 "use strict";
 console.log("linked");
 
-let greek = {happy: "Eftychismeno", new: "to neo", year: "etos" };
+let greek = {happy: "eftychismeno", new: "to neo", year: "etos" };
 
 function getGreekWord (word) {
     return greek[word];
@@ -99,6 +99,7 @@ const greek = require("./greek");
 const japanese = require("./japanese");
 const dutch = require("./dutch");
 const french = require("./french");
+
 const languages = {
   greek: greek,
   japanese: japanese,
@@ -111,8 +112,12 @@ const translate = (text, opt) => {
   let translatedArr = arr.map( word => {
     return languages[opt](word);
   });
-  console.log(translatedArr);
-  return translatedArr.join(" ");
+
+  let completedStr = translatedArr.join(" ");
+  completedStr = completedStr.charAt(0).toUpperCase() + completedStr.slice(1);
+  let wordCheck = translatedArr.indexOf(undefined);
+  let stringToPrint = wordCheck !== -1 ? "We speak American here." : completedStr;
+  return stringToPrint;
 };
 
 
