@@ -4,6 +4,7 @@ const greek = require("./greek");
 const japanese = require("./japanese");
 const dutch = require("./dutch");
 const french = require("./french");
+
 const languages = {
   greek: greek,
   japanese: japanese,

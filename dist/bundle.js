@@ -62,7 +62,7 @@ module.exports = french;
 "use strict";
 console.log("linked");
 
-let greek = {happy: "Eftychismeno", new: "to neo", year: "etos" };
+let greek = {happy: "eftychismeno", new: "to neo", year: "etos" };
 
 function getGreekWord (word) {
     return greek[word];
@@ -99,6 +99,7 @@ const greek = require("./greek");
 const japanese = require("./japanese");
 const dutch = require("./dutch");
 const french = require("./french");
+
 const languages = {
   greek: greek,
   japanese: japanese,
