@@ -6,7 +6,7 @@ const translator = require("./translator");
 const output = document.getElementById('translatedOutput');
 
 function outputTranslation() {
-    // output.innerHTML = translator.translate();//translate() = w/e we call translator function
+    output.innerHTML = translator.translate();//translate() = w/e we call translator function
 }
 
 
