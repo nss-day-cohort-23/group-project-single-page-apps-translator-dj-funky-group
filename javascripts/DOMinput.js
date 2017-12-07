@@ -1,7 +1,7 @@
 "use strict";
 
 function textInput () {
-  let userInput = document.getElementById("textInput").value.toLowerCase();
+  let userInput = document.getElementById("textInput").value.toLowerCase().trim();
   return userInput;
 }
 
