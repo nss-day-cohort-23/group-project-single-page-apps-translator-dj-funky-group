@@ -2,3 +2,5 @@ node_modules
 stylesheets
 package-lock.json
 .sass-cache
+dist/bundle.js
+javascripts/main.js
