@@ -2,8 +2,10 @@
 const translate = require("./translator.js");
 const dom = require("./DOMinput.js");
 const output = document.getElementById('translatedOutput');
+const speaker = require("./speaker.js");
 
 let translateBtn = document.getElementById("translateBtn");
+let listenButton = document.getElementById("listenBtn");
 
 const listener = () => {
   translateBtn.addEventListener("click", () => {
@@ -13,6 +15,10 @@ const listener = () => {
     output.innerHTML = translation;
     }
   );
+
+  listenButton.addEventListener("click", () => {
+    speaker();
+  });
 };
 
 module.exports = listener;
