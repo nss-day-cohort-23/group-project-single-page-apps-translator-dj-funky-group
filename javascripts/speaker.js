@@ -1,4 +1,5 @@
 "use strict";
+
 function speak(string) {
     let speaker= window.speechSynthesis;
     let speech = new SpeechSynthesisUtterance();

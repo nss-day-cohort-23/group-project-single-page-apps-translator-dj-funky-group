@@ -105,6 +105,7 @@ events();
 
 },{"./events.js":3}],8:[function(require,module,exports){
 "use strict";
+
 function speak(string) {
     let speaker= window.speechSynthesis;
     let speech = new SpeechSynthesisUtterance();
