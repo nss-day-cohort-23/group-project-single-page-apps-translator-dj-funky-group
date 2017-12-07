@@ -15,10 +15,28 @@ module.exports = { textInput, getLanguage };
 
 },{}],2:[function(require,module,exports){
 "use strict";
-const dutchWords = { happy: "gelukkig", new: "nieuwe", year: "jaar" };
 
-const getDutch = function (word) {
-    return dutchWords[word];
+let dutchWords = {
+  happy: "gelukkig",
+  new: "nieuwe",
+  year: "jaar",
+  merry: "merry",
+  christmas: "kerstfeest",
+  easter: "Pasen",
+  fourth: "vierde",
+  of: "van",
+  july: "juli",
+  thanksgiving: "dankzegging",
+  where: "waar",
+  is: "is",
+  the: "de",
+  bathroom: "badkamer",
+  fat: "dikke",
+  tuesday: "dinsdag"
+};
+
+const getDutch = function(word) {
+  return dutchWords[word];
 };
 
 module.exports = getDutch;
@@ -47,9 +65,22 @@ module.exports = listener;
 "use strict";
 
 let frenchWords = {
-  "happy": "bonne",
-  "new": "nouveau",
-  "year": "année"
+  happy: "bonne",
+  new: "nouveau",
+  year: "année",
+  merry: "joyeux",
+  christmas: "Noël",
+  easter: "Pâques",
+  fourth: "quatre",
+  of: "de",
+  july: "juillet",
+  thanksgiving: "action de grâces",
+  where: "où",
+  is: "est",
+  the: "le",
+  bathroom: "salle de bains",
+  fat: "Gras",
+  tuesday: "mardi"
 };
 
 const french = function(word) {
@@ -60,27 +91,56 @@ module.exports = french;
 
 },{}],5:[function(require,module,exports){
 "use strict";
-console.log("linked");
 
-let greek = {happy: "eftychismeno", new: "to neo", year: "etos" };
+let greek = {
+  happy: "eftychisméno",
+  new: "to néo",
+  year: "étos",
+  merry: "kalá",
+  christmas: "Christoúgenna",
+  easter: "Páscha",
+  fourth: "tétartos",
+  of: "του",
+  july: "Ioúlios",
+  thanksgiving: "efcharistía",
+  where: "που",
+  is: "είναι",
+  the: "o",
+  bathroom: "toualéta",
+  fat: "líges",
+  tuesday: "méres"
+};
 
-function getGreekWord (word) {
-    return greek[word];
+function getGreekWord(word) {
+  return greek[word];
 }
 
-module.exports=getGreekWord;
+module.exports = getGreekWord;
 
 },{}],6:[function(require,module,exports){
 "use strict";
 
 let japaneseKanji = {
-    "happy": "ハッピー",
-    "new": "ほやほや",
-    "year": "とし"
+  happy: "ハッピー",
+  new: "ほやほや",
+  year: "とし",
+  merry: "メリー",
+  christmas: "クリスマス",
+  easter: "イースター",
+  fourth: "第4",
+  of: "の",
+  july: "7月",
+  thanksgiving: "感謝祭",
+  where: "どこで",
+  is: "は",
+  the: "その",
+  bathroom: "バスルーム",
+  fat: "脂肪",
+  tuesday: "火曜日"
 
 };
-const getJapaneseKanji = function (word) {
-    return japaneseKanji[word];
+const getJapaneseKanji = function(word) {
+  return japaneseKanji[word];
 };
 
 module.exports = getJapaneseKanji;

@@ -1,8 +1,26 @@
 "use strict";
-const dutchWords = { happy: "gelukkig", new: "nieuwe", year: "jaar" };
 
-const getDutch = function (word) {
-    return dutchWords[word];
+let dutchWords = {
+  happy: "gelukkig",
+  new: "nieuwe",
+  year: "jaar",
+  merry: "merry",
+  christmas: "kerstfeest",
+  easter: "Pasen",
+  fourth: "vierde",
+  of: "van",
+  july: "juli",
+  thanksgiving: "dankzegging",
+  where: "waar",
+  is: "is",
+  the: "de",
+  bathroom: "badkamer",
+  fat: "dikke",
+  tuesday: "dinsdag"
+};
+
+const getDutch = function(word) {
+  return dutchWords[word];
 };
 
 module.exports = getDutch;

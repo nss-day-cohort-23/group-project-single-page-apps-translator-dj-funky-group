@@ -1,10 +1,26 @@
 "use strict";
-console.log("linked");
 
-let greek = {happy: "eftychismeno", new: "to neo", year: "etos" };
+let greek = {
+  happy: "eftychisméno",
+  new: "to néo",
+  year: "étos",
+  merry: "kalá",
+  christmas: "Christoúgenna",
+  easter: "Páscha",
+  fourth: "tétartos",
+  of: "του",
+  july: "Ioúlios",
+  thanksgiving: "efcharistía",
+  where: "που",
+  is: "είναι",
+  the: "o",
+  bathroom: "toualéta",
+  fat: "líges",
+  tuesday: "méres"
+};
 
-function getGreekWord (word) {
-    return greek[word];
+function getGreekWord(word) {
+  return greek[word];
 }
 
-module.exports=getGreekWord;
+module.exports = getGreekWord;
