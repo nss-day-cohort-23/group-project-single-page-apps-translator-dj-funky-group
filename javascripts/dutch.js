@@ -1,8 +1,15 @@
 "use strict";
-const dutchWords = { happy: "gelukkig", new: "nieuwe", year: "jaar" };
+const dutchWords = { 
+    happy: "Gelukkig", 
+    new: "Nieuwe", 
+    year: "Jaar",
+    merry: "Vrolijk",
+    christmas: "Kerstmis",
+    holidays: "Vakantie",
+    "season's": "Seizoenen",
+    greetings: "Groeten"
+ };
 
-const getDutch = function (word) {
-    return dutchWords[word];
-};
+const getDutch = word => dutchWords[word];
 
 module.exports = getDutch;

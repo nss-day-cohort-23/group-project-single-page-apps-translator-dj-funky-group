@@ -15,11 +15,18 @@ module.exports = { textInput, getLanguage };
 
 },{}],2:[function(require,module,exports){
 "use strict";
-const dutchWords = { happy: "gelukkig", new: "nieuwe", year: "jaar" };
+const dutchWords = { 
+    happy: "Gelukkig", 
+    new: "Nieuwe", 
+    year: "Jaar",
+    merry: "Vrolijk",
+    christmas: "Kerstmis",
+    holidays: "Vakantie",
+    "season's": "Seizoenen",
+    greetings: "Groeten"
+ };
 
-const getDutch = function (word) {
-    return dutchWords[word];
-};
+const getDutch = word => dutchWords[word];
 
 module.exports = getDutch;
 
@@ -36,7 +43,8 @@ const listener = () => {
     let text = dom.textInput();
     let opt = dom.getLanguage();
     let translation = translate(text, opt);
-    output.innerHTML = translation;
+    output.innerHTML = translation+'<br>';
+    output.innerHTML += " <img src='images/" + opt + ".jpg' width='35px' height='35px'>";
     }
   );
 };
