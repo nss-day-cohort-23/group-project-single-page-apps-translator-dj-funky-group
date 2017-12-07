@@ -17,7 +17,7 @@ const listener = () => {
   );
 
   listenButton.addEventListener("click", () => {
-    speaker();
+    speaker(translation);
   });
 };
 
