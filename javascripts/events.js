@@ -4,26 +4,23 @@ const dom = require("./DOMinput.js");
 const speaker = require("./speaker.js");
 const output = document.getElementById('translatedOutput');
 
-
+let buttonDiv = document.getElementById("buttons");
 let translateBtn = document.getElementById("translateBtn");
 let listenButton = document.getElementById("listenBtn");
 
 const listener = () => {
-  translateBtn.addEventListener("click", () => {
+
+  buttonDiv.addEventListener("click", () => {
     let text = dom.textInput();
     let opt = dom.getLanguage();
     let translation = translate(text, opt);
-    output.innerHTML = translation;
+    if (event.target.id === "translateBtn"){
+      output.innerHTML = translation;
+    } else if (event.target.id === "listenBtn"){
+      speaker(translation);
     }
-  );
-// refactor to be event.target
-  listenButton.addEventListener("click", () => {
-    console.log("listen button clicked");
-    let text = dom.textInput();
-    let opt = dom.getLanguage();
-    let translation = translate(text, opt);
-    speaker(translation);
   });
 };
+
 
 module.exports = listener;
