@@ -6,6 +6,9 @@ let japaneseKanji = {
     "year": "とし"
 };
 
+const getJapaneseKanji = function (word) {
+    return japaneseKanji[word];
+};
 
-module.exports = japaneseKanji;
+module.exports = getJapaneseKanji;
 

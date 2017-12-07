@@ -1,9 +1,13 @@
 "use strict";
 
-let japanesePhonetic = {
+const japanesePhonetic = {
     "happy": "happii",
     "new": "hoyahoya",
     "year": "toshi"
-}
+};
 
-module.exports = japanesePhonetic;
+const getJapanesePhonetic = function (word) {
+    return japanesePhonetic[word];
+};
+
+module.exports = getJapanesePhonetic;
