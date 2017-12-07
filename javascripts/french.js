@@ -1,13 +1,13 @@
 "use strict";
 
-const frenchWords = {
-  happy: "bonne",
-  new: "nouveau",
-  year: "année"
+let frenchWords = {
+  "happy": "bonne",
+  "new": "nouveau",
+  "year": "année"
 };
 
-const french = word => {
+const french = function(word) {
   return frenchWords[word];
 };
 
-module.exports = {french};
+module.exports = french;
