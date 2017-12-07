@@ -1,15 +1,26 @@
 "use strict";
-const dutchWords = { 
-    happy: "Gelukkig", 
-    new: "Nieuwe", 
-    year: "Jaar",
-    merry: "Vrolijk",
-    christmas: "Kerstmis",
-    holidays: "Vakantie",
-    "season's": "Seizoenen",
-    greetings: "Groeten"
- };
 
-const getDutch = word => dutchWords[word];
+let dutchWords = {
+  happy: "gelukkig",
+  new: "nieuwe",
+  year: "jaar",
+  merry: "merry",
+  christmas: "kerstfeest",
+  easter: "Pasen",
+  fourth: "vierde",
+  of: "van",
+  july: "juli",
+  thanksgiving: "dankzegging",
+  where: "waar",
+  is: "is",
+  the: "de",
+  bathroom: "badkamer",
+  fat: "dikke",
+  tuesday: "dinsdag"
+};
+
+const getDutch = function(word) {
+  return dutchWords[word];
+};
 
 module.exports = getDutch;
