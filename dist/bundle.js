@@ -20,7 +20,7 @@ let dutchWords = {
   happy: "gelukkig",
   new: "nieuwe",
   year: "jaar",
-  merry: "merry",
+  merry: "vrolijk",
   christmas: "kerstfeest",
   easter: "Pasen",
   fourth: "vierde",
