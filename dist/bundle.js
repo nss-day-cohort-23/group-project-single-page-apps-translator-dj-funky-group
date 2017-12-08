@@ -45,24 +45,35 @@ module.exports = getDutch;
 "use strict";
 const translate = require("./translator.js");
 const dom = require("./DOMinput.js");
+const speaker = require("./speaker.js");
 const output = document.getElementById('translatedOutput');
 
+let buttonDiv = document.getElementById("buttons");
 let translateBtn = document.getElementById("translateBtn");
+let listenButton = document.getElementById("listenBtn");
 
 const listener = () => {
-  translateBtn.addEventListener("click", () => {
+
+  buttonDiv.addEventListener("click", (event) => {
     let text = dom.textInput();
     let opt = dom.getLanguage();
     let translation = translate(text, opt);
-    output.innerHTML = translation+'<br>';
-    output.innerHTML += " <img src='images/" + opt + ".jpg' width='45px' height='45px'>";
+
+    if (event.target.id === "translateBtn"){
+      output.innerHTML = translation + '<br>';
+      output.innerHTML += " <img src='images/" + opt + ".jpg' width='45px' height='45px'>";
+    } else if (event.target.id === "listenBtn"){
+      speaker(translation, opt);
+      output.innerHTML = translation+'<br>';
+      output.innerHTML += " <img src='images/" + opt + ".jpg' width='45px' height='45px'>";
     }
-  );
+  });
 };
+
 
 module.exports = listener;
 
-},{"./DOMinput.js":1,"./translator.js":8}],4:[function(require,module,exports){
+},{"./DOMinput.js":1,"./speaker.js":8,"./translator.js":9}],4:[function(require,module,exports){
 "use strict";
 
 let frenchWords = {
@@ -155,6 +166,49 @@ events();
 
 },{"./events.js":3}],8:[function(require,module,exports){
 "use strict";
+let speaker = window.speechSynthesis;
+let speech = new SpeechSynthesisUtterance();
+let voices;
+speech.voiceURI = 'native';
+speech.volume = 1; // 0 to 1
+speech.rate = 0.7; // 0.1 to 10
+speech.pitch = 1; //0 to 2
+
+speaker.onvoiceschanged = function () {
+    voices = speaker.getVoices();
+   
+};
+
+function speak(string, opt){ 
+    switch (opt) {
+        case "dutch":
+            speech.voice = voices[41];
+            break;
+        case "french":
+            speech.voice = voices[37];
+            break;
+        case "greek":
+            speech.voice = voices[26];
+            break;
+        case "japanese":
+            speech.voice = voices[18];
+            break;
+        default:
+            speech.voice = voices[48];
+    }
+
+    speech.text = string;
+    console.log("the VOICE", speech.voice);
+    speaker.speak(speech);
+}
+    
+
+
+module.exports = speak;
+
+
+},{}],9:[function(require,module,exports){
+"use strict";
 
 const greek = require("./greek");
 const japanese = require("./japanese");
@@ -180,6 +234,8 @@ const translate = (text, opt) => {
   let stringToPrint = wordCheck !== -1 ? "We speak American here." : completedStr;
   return stringToPrint;
 };
+
+
 
 
 module.exports = translate;
