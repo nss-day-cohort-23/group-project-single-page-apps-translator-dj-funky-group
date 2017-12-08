@@ -7,6 +7,7 @@ speech.volume = 1; // 0 to 1
 speech.rate = 0.7; // 0.1 to 10
 speech.pitch = 1; //0 to 2
 
+// these voices are compatible with an older version of Google Chrome (61.0.3163.100)-- different browsers and newer versions have different voices and don't include a Greek accent
 speaker.onvoiceschanged = function () {
     voices = speaker.getVoices();
    
