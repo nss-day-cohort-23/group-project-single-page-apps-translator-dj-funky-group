@@ -15,10 +15,28 @@ module.exports = { textInput, getLanguage };
 
 },{}],2:[function(require,module,exports){
 "use strict";
-const dutchWords = { happy: "gelukkig", new: "nieuwe", year: "jaar" };
 
-const getDutch = function (word) {
-    return dutchWords[word];
+let dutchWords = {
+  happy: "gelukkig",
+  new: "nieuwe",
+  year: "jaar",
+  merry: "vrolijk",
+  christmas: "kerstfeest",
+  easter: "Pasen",
+  fourth: "vierde",
+  of: "van",
+  july: "juli",
+  thanksgiving: "dankzegging",
+  where: "waar",
+  is: "is",
+  the: "de",
+  bathroom: "badkamer",
+  fat: "dikke",
+  tuesday: "dinsdag"
+};
+
+const getDutch = function(word) {
+  return dutchWords[word];
 };
 
 module.exports = getDutch;
@@ -27,29 +45,54 @@ module.exports = getDutch;
 "use strict";
 const translate = require("./translator.js");
 const dom = require("./DOMinput.js");
+const speaker = require("./speaker.js");
 const output = document.getElementById('translatedOutput');
 
+let buttonDiv = document.getElementById("buttons");
 let translateBtn = document.getElementById("translateBtn");
+let listenButton = document.getElementById("listenBtn");
 
 const listener = () => {
-  translateBtn.addEventListener("click", () => {
+
+  buttonDiv.addEventListener("click", (event) => {
     let text = dom.textInput();
     let opt = dom.getLanguage();
     let translation = translate(text, opt);
-    output.innerHTML = translation;
+
+    if (event.target.id === "translateBtn"){
+      output.innerHTML = translation + '<br>';
+      output.innerHTML += " <img src='images/" + opt + ".jpg' width='45px' height='45px'>";
+    } else if (event.target.id === "listenBtn"){
+      speaker(translation, opt);
+      output.innerHTML = translation+'<br>';
+      output.innerHTML += " <img src='images/" + opt + ".jpg' width='45px' height='45px'>";
     }
-  );
+  });
 };
+
 
 module.exports = listener;
 
-},{"./DOMinput.js":1,"./translator.js":8}],4:[function(require,module,exports){
+},{"./DOMinput.js":1,"./speaker.js":8,"./translator.js":9}],4:[function(require,module,exports){
 "use strict";
 
 let frenchWords = {
-  "happy": "bonne",
-  "new": "nouveau",
-  "year": "année"
+  happy: "bonne",
+  new: "nouveau",
+  year: "année",
+  merry: "joyeux",
+  christmas: "Noël",
+  easter: "Pâques",
+  fourth: "quatre",
+  of: "de",
+  july: "juillet",
+  thanksgiving: "action de grâces",
+  where: "où",
+  is: "est",
+  the: "le",
+  bathroom: "salle de bains",
+  fat: "Gras",
+  tuesday: "mardi"
 };
 
 const french = function(word) {
@@ -60,27 +103,56 @@ module.exports = french;
 
 },{}],5:[function(require,module,exports){
 "use strict";
-console.log("linked");
 
-let greek = {happy: "eftychismeno", new: "to neo", year: "etos" };
+let greek = {
+  happy: "eftychisméno",
+  new: "to néo",
+  year: "étos",
+  merry: "kalá",
+  christmas: "Christoúgenna",
+  easter: "Páscha",
+  fourth: "tétartos",
+  of: "του",
+  july: "Ioúlios",
+  thanksgiving: "efcharistía",
+  where: "που",
+  is: "είναι",
+  the: "o",
+  bathroom: "toualéta",
+  fat: "líges",
+  tuesday: "méres"
+};
 
-function getGreekWord (word) {
-    return greek[word];
+function getGreekWord(word) {
+  return greek[word];
 }
 
-module.exports=getGreekWord;
+module.exports = getGreekWord;
 
 },{}],6:[function(require,module,exports){
 "use strict";
 
 let japaneseKanji = {
-    "happy": "ハッピー",
-    "new": "ほやほや",
-    "year": "とし"
+  happy: "ハッピー",
+  new: "ほやほや",
+  year: "とし",
+  merry: "メリー",
+  christmas: "クリスマス",
+  easter: "イースター",
+  fourth: "第4",
+  of: "の",
+  july: "7月",
+  thanksgiving: "感謝祭",
+  where: "どこで",
+  is: "は",
+  the: "その",
+  bathroom: "バスルーム",
+  fat: "脂肪",
+  tuesday: "火曜日"
 
 };
-const getJapaneseKanji = function (word) {
-    return japaneseKanji[word];
+const getJapaneseKanji = function(word) {
+  return japaneseKanji[word];
 };
 
 module.exports = getJapaneseKanji;
@@ -93,6 +165,49 @@ const events = require("./events.js");
 events();
 
 },{"./events.js":3}],8:[function(require,module,exports){
+"use strict";
+let speaker = window.speechSynthesis;
+let speech = new SpeechSynthesisUtterance();
+let voices;
+speech.voiceURI = 'native';
+speech.volume = 1; // 0 to 1
+speech.rate = 0.7; // 0.1 to 10
+speech.pitch = 1; //0 to 2
+
+speaker.onvoiceschanged = function () {
+    voices = speaker.getVoices();
+   
+};
+
+function speak(string, opt){ 
+    switch (opt) {
+        case "dutch":
+            speech.voice = voices[41];
+            break;
+        case "french":
+            speech.voice = voices[37];
+            break;
+        case "greek":
+            speech.voice = voices[26];
+            break;
+        case "japanese":
+            speech.voice = voices[18];
+            break;
+        default:
+            speech.voice = voices[48];
+    }
+
+    speech.text = string;
+    console.log("the VOICE", speech.voice);
+    speaker.speak(speech);
+}
+    
+
+
+module.exports = speak;
+
+
+},{}],9:[function(require,module,exports){
 "use strict";
 
 const greek = require("./greek");
@@ -119,6 +234,8 @@ const translate = (text, opt) => {
   let stringToPrint = wordCheck !== -1 ? "We speak American here." : completedStr;
   return stringToPrint;
 };
+
+
 
 
 module.exports = translate;

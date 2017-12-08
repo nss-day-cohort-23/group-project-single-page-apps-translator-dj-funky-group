@@ -26,4 +26,6 @@ const translate = (text, opt) => {
 };
 
 
+
+
 module.exports = translate;
