@@ -19,7 +19,7 @@ const listener = () => {
       output.innerHTML = translation + '<br>';
       output.innerHTML += " <img src='images/" + opt + ".jpg' width='45px' height='45px'>";
     } else if (event.target.id === "listenBtn"){
-      speaker(translation);
+      speaker(translation, opt);
       output.innerHTML = translation+'<br>';
       output.innerHTML += " <img src='images/" + opt + ".jpg' width='45px' height='45px'>";
     }

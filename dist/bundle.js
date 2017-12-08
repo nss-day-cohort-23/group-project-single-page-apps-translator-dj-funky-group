@@ -63,7 +63,7 @@ const listener = () => {
       output.innerHTML = translation + '<br>';
       output.innerHTML += " <img src='images/" + opt + ".jpg' width='45px' height='45px'>";
     } else if (event.target.id === "listenBtn"){
-      speaker(translation);
+      speaker(translation, opt);
       output.innerHTML = translation+'<br>';
       output.innerHTML += " <img src='images/" + opt + ".jpg' width='45px' height='45px'>";
     }
@@ -167,19 +167,35 @@ events();
 },{"./events.js":3}],8:[function(require,module,exports){
 "use strict";
 
-
-function speak(string){
+function speak(string, opt){
     let speaker = window.speechSynthesis;
     let voices = speaker.getVoices();
     let speech = new SpeechSynthesisUtterance();
-    speech.voice = voices[2];
+
+    switch (opt) {
+        case "dutch":
+            speech.voice = voices[41]; // dutch accent
+            break;
+        case "french":
+            speech.voice = voices[37];
+            break;
+        case "greek":
+            speech.voice = voices[26];
+            break;
+        case "japanese":
+            speech.voice = voices[18];
+            break;
+        default:
+            speech.voice = voices[48];
+    }
+
     speech.voiceURI = 'native';
     speech.volume = 1; // 0 to 1
     speech.rate = 0.5; // 0.1 to 10
     speech.pitch = 1; //0 to 2
     speech.text = string;
-    speech.lang = 'en-US';
     console.log("the VOICE", speech.voice);
+    console.log("the LANG", speech.lang);
     speaker.speak(speech);
 }
 
