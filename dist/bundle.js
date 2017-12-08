@@ -46,6 +46,9 @@ module.exports = getDutch;
 const translate = require("./translator.js");
 const dom = require("./DOMinput.js");
 const speaker = require("./speaker.js");
+const rand = require("./randomizer.js");
+const offender = require("./offensive-statements.js");
+
 const output = document.getElementById('translatedOutput');
 
 let buttonDiv = document.getElementById("buttons");
@@ -55,25 +58,25 @@ let listenButton = document.getElementById("listenBtn");
 const listener = () => {
 
   buttonDiv.addEventListener("click", (event) => {
+    let num = rand();
     let text = dom.textInput();
     let opt = dom.getLanguage();
-    let translation = translate(text, opt);
+    let realTranslation = translate(text, opt);
+    let fakeTranslation = offender(opt);
+    let translation = num <= 5 ? realTranslation : fakeTranslation;
 
-    if (event.target.id === "translateBtn"){
-      output.innerHTML = translation + '<br>';
-      output.innerHTML += " <img src='images/" + opt + ".jpg' width='45px' height='45px'>";
-    } else if (event.target.id === "listenBtn"){
+    if (event.target.id === "listenBtn"){
       speaker(translation, opt);
-      output.innerHTML = translation+'<br>';
-      output.innerHTML += " <img src='images/" + opt + ".jpg' width='45px' height='45px'>";
     }
+    output.innerHTML = translation+'<br>';
+    output.innerHTML += " <img src='images/" + opt + ".jpg' width='45px' height='45px'>";
   });
 };
 
 
 module.exports = listener;
 
-},{"./DOMinput.js":1,"./speaker.js":8,"./translator.js":9}],4:[function(require,module,exports){
+},{"./DOMinput.js":1,"./offensive-statements.js":8,"./randomizer.js":9,"./speaker.js":10,"./translator.js":11}],4:[function(require,module,exports){
 "use strict";
 
 let frenchWords = {
@@ -166,6 +169,37 @@ events();
 
 },{"./events.js":3}],8:[function(require,module,exports){
 "use strict";
+
+const greek = require("./greek");
+const japanese = require("./japanese");
+const dutch = require("./dutch");
+const french = require("./french");
+
+const offensiveStatements = {
+    greek: "Greek offensive statement",
+    japanese: "謹んで申し上げます、くたばれ、ボケ。", 
+    dutch: "dutch offensive statement",
+    french: "Nique ta mere!"
+};
+
+const translateOffensive = function(opt) {
+    return offensiveStatements[opt];
+};
+
+module.exports = translateOffensive;
+
+},{"./dutch":2,"./french":4,"./greek":5,"./japanese":6}],9:[function(require,module,exports){
+"use strict";
+
+function rand() {
+  let num = Math.round(Math.random()*10);
+  console.log(num);
+  return num;
+}
+module.exports = rand;
+
+},{}],10:[function(require,module,exports){
+"use strict";
 let speaker = window.speechSynthesis;
 let speech = new SpeechSynthesisUtterance();
 let voices;
@@ -207,7 +241,7 @@ function speak(string, opt){
 module.exports = speak;
 
 
-},{}],9:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 "use strict";
 
 const greek = require("./greek");
