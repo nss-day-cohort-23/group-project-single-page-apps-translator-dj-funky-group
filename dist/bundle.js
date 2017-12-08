@@ -166,15 +166,23 @@ events();
 
 },{"./events.js":3}],8:[function(require,module,exports){
 "use strict";
+let speaker = window.speechSynthesis;
+let speech = new SpeechSynthesisUtterance();
+let voices;
+speech.voiceURI = 'native';
+speech.volume = 1; // 0 to 1
+speech.rate = 0.7; // 0.1 to 10
+speech.pitch = 1; //0 to 2
 
-function speak(string, opt){
-    let speaker = window.speechSynthesis;
-    let voices = speaker.getVoices();
-    let speech = new SpeechSynthesisUtterance();
+speaker.onvoiceschanged = function () {
+    voices = speaker.getVoices();
+   
+};
 
+function speak(string, opt){ 
     switch (opt) {
         case "dutch":
-            speech.voice = voices[41]; // dutch accent
+            speech.voice = voices[41];
             break;
         case "french":
             speech.voice = voices[37];
@@ -189,15 +197,12 @@ function speak(string, opt){
             speech.voice = voices[48];
     }
 
-    speech.voiceURI = 'native';
-    speech.volume = 1; // 0 to 1
-    speech.rate = 0.5; // 0.1 to 10
-    speech.pitch = 1; //0 to 2
     speech.text = string;
     console.log("the VOICE", speech.voice);
-    console.log("the LANG", speech.lang);
     speaker.speak(speech);
 }
+    
+
 
 module.exports = speak;
 
