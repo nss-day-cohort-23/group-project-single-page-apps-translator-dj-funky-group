@@ -104,11 +104,12 @@ events();
 },{"./events.js":3}],8:[function(require,module,exports){
 "use strict";
 
-function speak(string) {
+
+function speak(string){
     let speaker = window.speechSynthesis;
     let voices = speaker.getVoices();
     let speech = new SpeechSynthesisUtterance();
-    speech.voice = voices[2]; 
+    speech.voice = voices[2];
     speech.voiceURI = 'native';
     speech.volume = 1; // 0 to 1
     speech.rate = 0.5; // 0.1 to 10
