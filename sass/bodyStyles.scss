@@ -1,0 +1,38 @@
+body {
+    background-image: url("../IMG/sparkles.jpg");    
+}
+h1{   
+    background-color: #CE1F30;
+    color: #42773D;
+    padding: .5em;
+    border-radius: 25px;
+}
+
+button, #langOption {
+    background-color: #CE1F30;
+    color: #42773D;
+    border: 3px dotted gold;
+    border-radius: 25px;
+}
+
+h1.text-center {
+border: 5px dotted gold;
+border-radius: 25px;
+}
+.container-fluid.plaid {
+    background-image: url("../IMG/plaid.jpg");
+    margin-top: 50px;
+    border: 10px dotted gold;
+    border-radius: 25px;
+}
+#translatedOutput {
+    padding: 0px;
+    border: none;
+}
+
+#textInput {
+    background-color: #CE1F30;
+    color: #42773D;
+    border: 5px dotted gold;
+    border-radius: 25px;
+}
