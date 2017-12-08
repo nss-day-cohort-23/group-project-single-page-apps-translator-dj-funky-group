@@ -16,7 +16,7 @@ let dutchWords = {
   the: "de",
   bathroom: "badkamer",
   fat: "dikke",
-  tuesday: "dinsdag"
+  tuesday: "dinsdag",
 };
 
 const getDutch = function(word) {
