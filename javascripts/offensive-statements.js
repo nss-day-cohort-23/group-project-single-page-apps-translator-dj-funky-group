@@ -6,9 +6,9 @@ const dutch = require("./dutch");
 const french = require("./french");
 
 const offensiveStatements = {
-    greek: "Greek offensive statement",
+    greek: "Gamo!",
     japanese: "謹んで申し上げます、くたばれ、ボケ。", 
-    dutch: "dutch offensive statement",
+    dutch: "Mierenneuker!",
     french: "Nique ta mere!"
 };
 
