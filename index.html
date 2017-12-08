@@ -9,14 +9,17 @@
   <body>
     <div class="container">
       <div class="container-fluid">
-        <h1 class="text-center">Holiday Greeting Translator!</h1>
+        <h1 class="text-center">Shitty American Tourist Holiday Greeting Translator! Yay!</h1>
+        <div class="alert alert-danger text-center" role="alert">
+            We reserve the right to literally translate holiday greetings word-for-word, even if total garbage is produced.
+        </div>
         <hr>
         <div class="row justify-content-center">
-          <textarea id="textInput" class="col-auto text-input" name="text-input" rows="8" cols="50">Happy New Year</textarea>
+          <textarea id="textInput" class="col-auto text-input" name="text-input" rows="8" cols="50" placeholder="English greeting"></textarea>
         </div>
         <hr>
         <div class="row justify-content-around">
-          <select id="langOption">
+          <select id="langOption" class="custom-select">
             <option value="dutch">Dutch</option>
             <option value="french">French</option>
             <option value="greek">Greek</option>
@@ -29,7 +32,7 @@
         </div>
         <hr>
         <div class="row justify-content-center">
-          <div id="translatedOutput" class="col-6 text-center text-output">HI</div>
+          <h1 id="translatedOutput" class="col-11 col-lg-6 text-center text-output"></h1>
         </div>
       </div>
     </div>

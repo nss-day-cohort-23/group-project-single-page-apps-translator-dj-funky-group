@@ -14,11 +14,14 @@ const listener = () => {
     let text = dom.textInput();
     let opt = dom.getLanguage();
     let translation = translate(text, opt);
+
     if (event.target.id === "translateBtn"){
-      output.innerHTML = translation;
+      output.innerHTML = translation + '<br>';
+      output.innerHTML += " <img src='images/" + opt + ".jpg' width='45px' height='45px'>";
     } else if (event.target.id === "listenBtn"){
       speaker(translation);
-      output.innerHTML = translation;
+      output.innerHTML = translation+'<br>';
+      output.innerHTML += " <img src='images/" + opt + ".jpg' width='45px' height='45px'>";
     }
   });
 };
